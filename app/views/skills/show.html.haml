@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @skill.name
+%p
+  %b Level:
+  = @skill.level
+%p
+  %b Type:
+  = @skill.type
+
+= link_to 'Edit', edit_skill_path(@skill)
+\|
+= link_to 'Back', skills_path

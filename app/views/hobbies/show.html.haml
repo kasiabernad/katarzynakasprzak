@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @hobby.name
+
+= link_to 'Edit', edit_hobby_path(@hobby)
+\|
+= link_to 'Back', hobbies_path

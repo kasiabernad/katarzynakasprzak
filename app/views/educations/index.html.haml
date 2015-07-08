@@ -1,0 +1,25 @@
+%h1 Listing educations
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th City
+      %th Level
+      %th
+      %th
+      %th
+
+  %tbody
+    - @educations.each do |education|
+      %tr
+        %td= education.name
+        %td= education.city
+        %td= education.level
+        %td= link_to 'Show', education
+        %td= link_to 'Edit', edit_education_path(education)
+        %td= link_to 'Destroy', education, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Education', new_education_path

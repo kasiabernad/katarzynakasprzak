@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @job.name
+%p
+  %b City:
+  = @job.city
+%p
+  %b Jobtittle:
+  = @job.jobtittle
+%p
+  %b Start date:
+  = @job.start_date
+%p
+  %b End date:
+  = @job.end_date
+
+= link_to 'Edit', edit_job_path(@job)
+\|
+= link_to 'Back', jobs_path

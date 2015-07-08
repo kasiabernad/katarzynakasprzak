@@ -1,0 +1,7 @@
+%p#notice= notice
+
+- @cv.jobs.each do |job|
+   = job.name
+= link_to 'Edit', edit_cv_path(@cv)
+\|
+= link_to 'Back', cvs_path
