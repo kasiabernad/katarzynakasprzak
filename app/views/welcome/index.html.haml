@@ -1,3 +1,12 @@
-%h1 Start making CV
-%button
-  = link_to 'New CV', new_cv_path
+.container
+  %h2 
+    %center 
+      Katarzyna Kasprzak
+  .jumbotron{style:'margin-top:10%'}
+    %h1 Hello!
+    %p You can make here your own CV or see mine
+    %p{style:'margin-top:20px'} 
+      %btn.btn-primary.btn-lg{style:'margin-right:20px'} 
+        = link_to 'New CV', new_cv_path
+      %btn.btn-primary.btn-lg
+        = link_to 'My CV', cv_path(id=1)

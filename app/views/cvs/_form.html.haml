@@ -1,63 +1,94 @@
-= nested_form_for @cv do |f|
-  - if @cv.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@cv.errors.count, "error")} prohibited this cv from being saved:"
-      %ul
-        - @cv.errors.full_messages.each do |msg|
-          %li= msg
-          
-  = f.fields_for :user do |user_form|
-    = user_form.text_field :firstname
-    = user_form.text_field :lastname
-    = user_form.link_to_remove "Remove this user"
-  - if @cv.user.nil?
-    = f.link_to_add "Add a user", :user, cv:@cv
-           
-  = f.fields_for :jobs do |job_form|
-    = job_form.text_field :name
-    = job_form.text_field :city
-    = job_form.text_field :jobtittle
-    = job_form.text_field :start_date
-    = job_form.text_field :end_date
-    = job_form.link_to_remove "Remove this job"
-  = f.link_to_add "Add a job", :jobs, cv:@cv
+.container
+  = nested_form_for @cv do |f|
+    - if @cv.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@cv.errors.count, "error")} prohibited this cv from being saved:"
+        %ul
+          - @cv.errors.full_messages.each do |msg|
+            %li= msg
+    .box  
+      %h3 Tell something about you    
+      = f.fields_for :user do |user_form|
+        = user_form.label :first_name
+        = user_form.text_field :firstname
+        %br
+        = user_form.label :last_name
+        = user_form.text_field :lastname
+        %br
+        = user_form.link_to_remove "Remove this user", class:'btn btn-danger', style:'margin-top:5px'
+      - if @cv.user.nil?
+        = f.link_to_add "Add a user", :user, cv:@cv
+    .box  
+      %h3 Tell something about your jobs      
+      = f.fields_for :jobs do |job_form|
+        %br
+        = job_form.label :name
+        = job_form.text_field :name
+        %br
+        = job_form.label :city
+        = job_form.text_field :city
+        %br
+        = job_form.label :jobtittle
+        = job_form.text_field :jobtittle
+        %br
+        = job_form.label :start_date
+        = job_form.text_field :start_date
+        %br
+        = job_form.label :end_date
+        = job_form.text_field :end_date
+        %br
+        = job_form.link_to_remove "Remove this job", class:'btn btn-danger', style:'margin-top:5px'
+      = f.link_to_add "Add a job", :jobs, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
+    
+    .box
+      %h3 Tell something about your education
+      = f.fields_for :educations do |education_form|
+        %br
+        = education_form.label :name
+        = education_form.text_field :name
+        %br
+        = education_form.label :city
+        = education_form.text_field :city
+        %br
+        = education_form.label :level
+        = education_form.text_field :level
+        %br
+        = education_form.link_to_remove "Remove this education step", class:'btn btn-danger', style:'margin-top:5px'
+      = f.link_to_add "Add a education level", :educations, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
+    
+    .box
+      %h3 Tell something about your skills
+      = f.fields_for :skills do |skill_form|
+        = skill_form.label :name
+        = skill_form.text_field :name
+        %br
+        = skill_form.label :level
+        = skill_form.text_field :level
+        %br
+        = skill_form.label :type
+        = skill_form.text_field :type
+        %br
+        = skill_form.link_to_remove "Remove this skill", class:'btn btn-danger', style:'margin-top:5px'
+      = f.link_to_add "Add a skill", :skills, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
+      
+    .box
+      %h3 Tell something about your hobbies
+      = f.fields_for :hobbies do |hobby_form|
+        %br
+        = hobby_form.label :name
+        = hobby_form.text_field :name
+        %br
+        = hobby_form.link_to_remove "Remove this hobby"
+      = f.link_to_add "Add a hobby", :hobbies, cv:@cv
+      
+    .box
+      %h3 Add more information about you
+      = f.fields_for :about do |about_form|
+        = about_form.text_field :description
+        = about_form.link_to_remove "Remove this description"
+      - if @cv.about.nil?
+        = f.link_to_add "Add a note about yourself", :about, cv:@cv
+    .box
+      .actions
+        = f.submit 'Save', :class=>'btn btn-primary'
   
-  = f.fields_for :educations do |education_form|
-    = education_form.text_field :name
-    = education_form.text_field :city
-    = education_form.text_field :level
-    = education_form.link_to_remove "Remove this education level"
-  = f.link_to_add "Add a education level", :educations, cv:@cv
-  
-  = f.fields_for :skills do |skill_form|
-    = skill_form.text_field :name
-    = skill_form.text_field :level
-    = skill_form.text_field :type
-    = skill_form.link_to_remove "Remove this skill"
-  = f.link_to_add "Add a skill", :skills, cv:@cv
-  
-  = f.fields_for :hobbies do |hobby_form|
-    = hobby_form.text_field :name
-    = hobby_form.link_to_remove "Remove this hobby"
-  = f.link_to_add "Add a hobby", :hobbies, cv:@cv
-  
-  = f.fields_for :about do |about_form|
-    = about_form.text_field :description
-    = about_form.link_to_remove "Remove this description"
-  = f.link_to_add "Napisz kilka słów o sobie", :about, cv:@cv
-  %button.btn.btn-danger{:type => "button"} Left
-  .dropdown
-    %button.btn.btn-danger.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-      Dropdown
-      %span.caret
-    %ul.dropdown-menu
-      %li
-        %a{:href => "#"} Action
-      %li
-        %a{:href => "#"} Another action
-      %li
-        %a{:href => "#"} Something else here
-      %li
-        %a{:href => "#"} Separated link
-  .actions
-    = f.submit 'Save'
