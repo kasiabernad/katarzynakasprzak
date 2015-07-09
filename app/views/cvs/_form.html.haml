@@ -25,7 +25,16 @@
             %br
             = user_form.label :last_name
             = user_form.text_field :lastname, autofocus: true, class:'form-control', :placeholder => 'Enter your last name'
+            %br
+            = user_form.label :street_address
+            = user_form.text_field :street_address, autofocus: true, class:'form-control', :placeholder => 'Enter Street Adress'
           .col-md-5{style:'float:right'}
+            %br
+            = user_form.label :zip
+            = user_form.text_field :zip, autofocus: true, class:'form-control', :placeholder => 'Enter Zip Code'
+            %br
+            = user_form.label :city
+            = user_form.text_field :city, autofocus: true, class:'form-control', :placeholder => 'Enter your City'
             %br
             = user_form.label :phone
             = user_form.text_field :phone, autofocus: true, class:'form-control', placeholder:'Enter your phone number'

@@ -1,26 +1,79 @@
-%p#notice= notice
+.container
+  %p#notice= notice
+  .col-md-2{style:'font-weight: bold'}
+    %h2{style:'text-transform:uppercase'}
+      = @cv.user.firstname
+      %br
+      = @cv.user.lastname
+    = image_tag(@cv.user.avatar_url, :width => 100, class:'class-image') if @cv.user.avatar.present?
+    %br
+    = @cv.user.street_address
+    %br
+    = @cv.user.zip
+    = @cv.user.city
+    %br
+    %ul{style:'font-size:9px'}
+      %li
+        %i.phone
+      %li
+        = @cv.user.phone
+      %li
+        %i.email
+      %li
+        = @cv.user.email
+      %li
+        %i.linkedin
+      %li
+        = @cv.user.linkedin
+  .col-md-10
+    %p
+      %i.career{style:'float:left'}
+      %h4 Career
+    = @cv.about.description
+    %br
+    %p
+      %i.experiance{style:'float:left'}
+      %h4 Experiance
+    - @cv.jobs.each do |job|
+      .col-md-5
+        = job.name
+        %br
+        = job.city
+        %br
+        = job.start_date
+        = '-'
+        = job.end_date
+      .col-md-5
+        = job.jobtittle
+        %br
+        %br
+        %br
 
-= image_tag(@cv.user.avatar_url, :width => 100) if @cv.user.avatar.present?
-= @cv.user.firstname
-= @cv.user.lastname
-
-- @cv.jobs.each do |job|
-  = job.name
-  = job.city
-  = job.jobtittle
-  = job.start_date
-  = job.end_date
-- @cv.educations.each do |education|
-  = education.name
-  = education.city
-  = education.level
-- @cv.skills.each do |skill|
-  = skill.name
-  = skill.level
-  = skill.skill_type
-- @cv.hobbies.each do |hobby|
-  = hobby.name
-= @cv.about.description
-= link_to 'Edit', edit_cv_path(@cv)
-\|
-= link_to 'Back', cvs_path
+    %br
+    %p
+      %i.education{style:'float:left'}
+      %h4 Education
+    - @cv.educations.each do |education|
+      = education.name
+      = education.city
+      = education.level
+    %br
+    %p
+      %i.skills{style:'float:left'}
+      %h4 Skills
+    - @cv.skills.each do |skill|
+      = skill.name
+      = skill.level
+      = skill.skill_type
+    %br
+    %p
+      %i.hobby{style:'float:left'}
+      %h4 Hobby
+    - @cv.hobbies.each do |hobby|
+      = hobby.name
+    
+    
+  = link_to 'Edit', edit_cv_path(@cv)
+  \|
+  = link_to 'Back', cvs_path
+  

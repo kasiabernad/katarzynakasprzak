@@ -1289,7 +1289,7 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 .lead {
   margin-bottom: 20px;
@@ -1414,11 +1414,23 @@ a.bg-danger:focus {
   margin: 40px 0 20px;
   border-bottom: 1px solid #eee;
 }
-ul,
+
 ol {
   margin-top: 0;
   margin-bottom: 10px;
 }
+
+ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+
+li{
+padding-right: .6em;
+}
+
 ul ul,
 ol ul,
 ul ol,
@@ -1650,6 +1662,66 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+.class-image{
+  border-radius: 50%;
+}
+i.phone{
+  width: 25px;
+  height: 25px;
+  background: url(../assets/phone.jpg)no-repeat 2px 1px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.email{
+  width: 25px;
+  height: 20px;
+  background: url(../assets/email.jpg)no-repeat 0px 3px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.linkedin{
+  width: 25px;
+  height: 20px;
+  background: url(../assets/linkedin.jpg)no-repeat 0px 0px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.career{
+  width: 30px;
+  height: 30px;
+  background: url(../assets/career.png)no-repeat 0px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.experiance{
+  width: 30px;
+  height: 30px;
+  background: url(../assets/experiance.png)no-repeat -2px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.education{
+  width: 35px;
+  height: 35px;
+  background: url(../assets/education.png)no-repeat 0px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.skills{
+  width: 35px;
+  height: 30px;
+  background: url(../assets/skills.png)no-repeat -2px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  }
+i.hobby{
+  width: 35px;
+  height: 30px;
+  background: url(../assets/hobby.png)no-repeat 2px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  }    
+ 
 @media (min-width: 768px) {
   .container {
     width: 750px;
