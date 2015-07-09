@@ -10,32 +10,32 @@
       %h3 Tell something about you    
       = f.fields_for :user do |user_form|
         = user_form.label :first_name
-        = user_form.text_field :firstname
+        = user_form.text_field :firstname, autofocus: true, class:'form-control', placeholder:'Enter your first name'
         %br
         = user_form.label :last_name
-        = user_form.text_field :lastname
+        = user_form.text_field :lastname, autofocus: true, class:'form-control', :placeholder => 'Enter your last name'
         %br
         = user_form.link_to_remove "Remove this user", class:'btn btn-danger', style:'margin-top:5px'
       - if @cv.user.nil?
-        = f.link_to_add "Add a user", :user, cv:@cv
+        = f.link_to_add "Add a user", :user, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
     .box  
       %h3 Tell something about your jobs      
       = f.fields_for :jobs do |job_form|
         %br
-        = job_form.label :name
-        = job_form.text_field :name
+        = job_form.label :name, 'Name of Company'
+        = job_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter name of Company'
         %br
-        = job_form.label :city
-        = job_form.text_field :city
+        = job_form.label :city, 'City of Company'
+        = job_form.text_field :city, autofocus: true, class:'form-control', placeholder:'Enter city of Company'
         %br
-        = job_form.label :jobtittle
-        = job_form.text_field :jobtittle
+        = job_form.label :job_tittle
+        = job_form.text_field :jobtittle, autofocus: true, class:'form-control', placeholder:'Enter your job tittle in this Company'
         %br
-        = job_form.label :start_date
-        = job_form.text_field :start_date
+        = job_form.label :start_date,'When You start this job?'
+        = job_form.date_select :start_date, autofocus: true, class:'form-control'
         %br
-        = job_form.label :end_date
-        = job_form.text_field :end_date
+        = job_form.label :end_date, 'When You end this job?', style:'margin-right:5px'
+        = job_form.date_select :end_date, autofocus: true, class:'form-control'
         %br
         = job_form.link_to_remove "Remove this job", class:'btn btn-danger', style:'margin-top:5px'
       = f.link_to_add "Add a job", :jobs, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
@@ -45,28 +45,28 @@
       = f.fields_for :educations do |education_form|
         %br
         = education_form.label :name
-        = education_form.text_field :name
+        = education_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter Name of School'
         %br
         = education_form.label :city
-        = education_form.text_field :city
+        = education_form.text_field :city, autofocus: true, class:'form-control', placeholder:'Enter City'
         %br
-        = education_form.label :level
-        = education_form.text_field :level
+        = education_form.label :level, 'Level of School'
+        = education_form.select(:level, ['Primary School','Middle School','High School','Bachelor','Master'],{}, {style:'width:100%'})
         %br
-        = education_form.link_to_remove "Remove this education step", class:'btn btn-danger', style:'margin-top:5px'
+        = education_form.link_to_remove "Remove this education step", class:'btn btn-danger', style:'margin-top:10px'
       = f.link_to_add "Add a education level", :educations, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
     
     .box
       %h3 Tell something about your skills
       = f.fields_for :skills do |skill_form|
         = skill_form.label :name
-        = skill_form.text_field :name
+        = skill_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter your first name'
         %br
-        = skill_form.label :level
-        = skill_form.text_field :level
+        = skill_form.label :level, 'Level of Skill (Scale 1-5)'
+        = skill_form.select(:level, ['1: Beginner','2: Elementary','3: Intermidiate','4: Advanced','5: Very Advanced'],{}, {style:'width:100%'})
         %br
-        = skill_form.label :type
-        = skill_form.text_field :type
+        = skill_form.label :skill_type, 'Profesional skill'
+        = skill_form.check_box_tag :skill_type, 'blabla'
         %br
         = skill_form.link_to_remove "Remove this skill", class:'btn btn-danger', style:'margin-top:5px'
       = f.link_to_add "Add a skill", :skills, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
@@ -76,19 +76,21 @@
       = f.fields_for :hobbies do |hobby_form|
         %br
         = hobby_form.label :name
-        = hobby_form.text_field :name
+        = hobby_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter your first name'
         %br
-        = hobby_form.link_to_remove "Remove this hobby"
-      = f.link_to_add "Add a hobby", :hobbies, cv:@cv
+        = hobby_form.link_to_remove "Remove this hobby", class:'btn btn-danger', style:'margin-top:5px'
+      = f.link_to_add "Add a hobby", :hobbies, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
       
     .box
       %h3 Add more information about you
       = f.fields_for :about do |about_form|
-        = about_form.text_field :description
-        = about_form.link_to_remove "Remove this description"
+        = about_form.text_area :description, rows:7, cols:20, autofocus: true, class:'form-control', placeholder:'Enter your first name'
+        %br
+        = about_form.link_to_remove "Remove this description", class:'btn btn-danger', style:'margin-top:5px'
       - if @cv.about.nil?
-        = f.link_to_add "Add a note about yourself", :about, cv:@cv
+        = f.link_to_add "Add a note about yourself", :about, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
     .box
-      .actions
-        = f.submit 'Save', :class=>'btn btn-primary'
+      %center
+        .actions
+          = f.submit 'Save', class:'btn btn-primary btn-lg', style:'width:200px'
   
