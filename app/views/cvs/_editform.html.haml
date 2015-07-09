@@ -13,8 +13,10 @@
         .actions
           = f.submit 'Save this CV', class:'btn btn-primary btn-lg', style:'width:200px'
     %center
-      .container{id:'userconatiner'}
-        = f.fields_for :user do |user_form|
+      - if @cv.user.nil?
+        = f.link_to_add "Add a user", :user, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
+      = f.fields_for :user do |user_form|
+        .container{id:'userconatiner'}
           .col-md-5{style:'float:left'}
             %h3 1. Tell something about you    
             = user_form.label :avatar, 'Upload your Photo'
@@ -36,6 +38,7 @@
             = user_form.label :linkedin
             = user_form.text_field :linkedin, autofocus: true, class:'form-control', placeholder:'Enter your Linkedin profil'
             %br
+            = user_form.link_to_remove "Remove this user", class:'btn btn-danger', style:'margin-top:5px'
       
       .left-box
         %h3 2. Tell something about your education
@@ -108,4 +111,7 @@
         = f.fields_for :about do |about_form|
           = about_form.text_area :description, rows:7, cols:20, autofocus: true, class:'form-control', placeholder:'Enter some extra information'
           %br
+          = about_form.link_to_remove "Remove this description", class:'btn btn-danger', style:'margin-top:5px'
+        - if @cv.about.nil?
+          = f.link_to_add "Add a note about yourself", :about, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
       

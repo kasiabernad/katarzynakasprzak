@@ -15,6 +15,8 @@ class CvsController < ApplicationController
   # GET /cvs/new
   def new
     @cv = Cv.new
+    @cv.build_user
+    @cv.build_about
   end
 
   # GET /cvs/1/edit
@@ -69,6 +71,6 @@ class CvsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cv_params
-      params.require(:cv).permit(jobs_attributes: [:id, :name, :city, :jobtittle, :start_date, :end_date, :cv_id, :_destroy], educations_attributes: [:id,:name, :city, :level, :cv_id, :_destroy], skills_attributes: [:id,:name, :level, :type, :cv_id, :_destroy], hobbys_attributes: [:id,:name, :cv_id, :_destroy], user_attributes: [:id,:firstname, :lastname, :phone, :email, :linkedin, :avatar, :address, :cv_id,:_destroy], about_attributes: [:id,:description, :cv_id, :_destroy])
+      params.require(:cv).permit(jobs_attributes: [:id, :name, :city, :jobtittle, :start_date, :end_date, :cv_id,:avatar, :_destroy], educations_attributes: [:id,:name, :city, :level, :cv_id, :_destroy], skills_attributes: [:id,:name, :level, :skill_type, :cv_id, :_destroy], hobbies_attributes: [:id,:name, :cv_id, :_destroy], user_attributes: [:id,:firstname, :lastname, :phone, :email, :linkedin, :avatar, :address, :cv_id,:_destroy], about_attributes: [:id,:description, :cv_id, :_destroy])
     end
 end

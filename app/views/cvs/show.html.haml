@@ -1,7 +1,26 @@
 %p#notice= notice
 
+= image_tag(@cv.user.avatar_url, :width => 100) if @cv.user.avatar.present?
+= @cv.user.firstname
+= @cv.user.lastname
+
 - @cv.jobs.each do |job|
-   = job.name
+  = job.name
+  = job.city
+  = job.jobtittle
+  = job.start_date
+  = job.end_date
+- @cv.educations.each do |education|
+  = education.name
+  = education.city
+  = education.level
+- @cv.skills.each do |skill|
+  = skill.name
+  = skill.level
+  = skill.skill_type
+- @cv.hobbies.each do |hobby|
+  = hobby.name
+= @cv.about.description
 = link_to 'Edit', edit_cv_path(@cv)
 \|
 = link_to 'Back', cvs_path

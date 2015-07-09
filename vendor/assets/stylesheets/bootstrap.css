@@ -1583,18 +1583,40 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-.box{
+.left-box{
   padding: 1em;
   background: #f9f9f9;
-  width: 50%;
+  width: 48%;
   float:left;
-  margin: 10px;
+  margin: 1%;
+  height:auto;
 }
+.right-box{
+  padding: 1em;
+  background: #f9f9f9;
+  width: 48%;
+  float:right;
+  margin: 1%;
+  height: auto;
+}
+.big-box{
+  padding: 1em;
+  background: #f9f9f9;
+  width: 100%;
+  margin: 1%;
+}
+#userconatiner{
+  padding: 1em;
+  background: #f9f9f9;
+  width: 100%;
+  margin: 1%;
+}
+  
 
 .border-form-div {
   width: 100%;
-  padding: 20px 30px 30px;
   background-color: white;
+  
   -webkit-border-radius: 0px;
      -moz-border-radius: 0px;
           border-radius: 0px;
