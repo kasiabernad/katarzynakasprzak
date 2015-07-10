@@ -11,4 +11,8 @@ class Cv < ActiveRecord::Base
   accepts_nested_attributes_for :hobbies, :allow_destroy => true
   accepts_nested_attributes_for :user, :allow_destroy => true
   accepts_nested_attributes_for :about, :allow_destroy => true
+  
+  def skills_with_type typeString
+  	self.skills.where(skill_type: typeString)
+  end
 end

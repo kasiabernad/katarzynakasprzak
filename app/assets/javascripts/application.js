@@ -18,3 +18,12 @@
 //= require_tree .
 
 
+function PrintDiv(name, file) { 
+ var divToPrint = document.getElementById(name);
+ var popupWin = window.open('', '_blank', 'width=600,height=600');
+ popupWin.document.open();
+ popupWin.document.title = file
+ popupWin.document.write('<html>')
+ popupWin.document.write('<body><link href="aplication.css" rel="stylesheet" type="text/css" />' + divToPrint.innerHTML + '</body></html>');
+ popupWin.document.close();
+}

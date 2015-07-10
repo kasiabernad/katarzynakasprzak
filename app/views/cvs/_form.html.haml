@@ -59,6 +59,16 @@
           = education_form.label :level, 'Level of School'
           = education_form.select(:level, ['Primary School','Middle School','High School','Bachelor','Master'],{}, {style:'width:100%'})
           %br
+          %br
+          = education_form.label :profile
+          = education_form.text_field :profile, autofocus: true, class:'form-control', placeholder:'Enter profile of this education step'
+          %br
+          = education_form.label :start_year,'Since Year:'
+          = education_form.date_select :start_year, start_year:1980, discard_day:'true', discard_month:'true', class:'form-control'
+          %br
+          = education_form.label :end_year, 'To Year:', style:'margin-right:5px'
+          = education_form.date_select :end_year, start_year:1980, discard_day:'true', discard_month:'true', class:'form-control'
+          %br
           = education_form.link_to_remove "Remove this education step", class:'btn btn-danger', style:'margin-top:10px'
         = f.link_to_add "Add a education level", :educations, cv:@cv, class:'btn btn-success', style:'margin-top:5px'  
         
@@ -69,12 +79,13 @@
           = skill_form.label :name
           = skill_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter your first name'
           %br
-          = skill_form.label :level, 'Level of Skill (Scale 1-5)'
-          = skill_form.select(:level, ['1: Beginner','2: Elementary','3: Intermidiate','4: Advanced','5: Very Advanced'],{}, {style:'width:100%'})
+          = skill_form.label :level, 'Level of Skill'
+          = '1: Begginer, 2: Elementary, 3: Intermediate, 4: Advanced, 5: Very Advanced'
+          = skill_form.select(:level, ['1','2','3','4','5'],{}, {style:'width:100%'})
           %br
           %br
           = skill_form.label :skill_type, 'Typeof Skill'
-          = skill_form.select(:skill_type, ['Profesional','Personal'],{}, {style:'width:100%'})
+          = skill_form.select(:skill_type, ['Professional','Personal'],{}, {style:'width:100%'})
           %br
           %br
           = skill_form.link_to_remove "Remove this skill", class:'btn btn-danger', style:'margin-top:5px'
@@ -94,27 +105,29 @@
           = job_form.text_field :jobtittle, autofocus: true, class:'form-control', placeholder:'Enter your job tittle in this Company'
           %br
           = job_form.label :start_date,'When You start this job?'
-          = job_form.date_select :start_date, autofocus: true, class:'form-control'
+          = job_form.date_select :start_date, autofocus: true, discard_day:'true', class:'form-control'
           %br
           = job_form.label :end_date, 'When You end this job?', style:'margin-right:5px'
-          = job_form.date_select :end_date, autofocus: true, class:'form-control'
+          = job_form.date_select :end_date, autofocus: true, discard_day:'true', class:'form-control'
+          %br
+          = job_form.label :description, 'Name of Company'
+          = job_form.text_area :description, autofocus: true, class:'form-control', placeholder:'Few words about your dutes in this Job'
           %br
           = job_form.link_to_remove "Remove this job", class:'btn btn-danger', style:'margin-top:5px'
         = f.link_to_add "Add a job", :jobs, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
-
-      .right-box
-        %h3 5. Tell something about your hobbies
-        = f.fields_for :hobbies do |hobby_form|
-          %hr
-          = hobby_form.label :name
-          = hobby_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter your hobby'
-          %br
-          = hobby_form.link_to_remove "Remove this hobby", class:'btn btn-danger', style:'margin-top:5px'
-        = f.link_to_add "Add a hobby", :hobbies, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
       
-      .left-box
-        %h3 6. Add more information about you
+      .right-box
+        %h3 5. Add more information about you
         = f.fields_for :about do |about_form|
           = about_form.text_area :description, rows:7, cols:20, autofocus: true, class:'form-control', placeholder:'Enter some extra information'
           %br
+    / .left-box
+    /   %h3 6. Tell something about your hobbies
+    /   = f.fields_for :hobbies do |hobby_form|
+    /     %hr
+    /     = hobby_form.label :name
+    /     = hobby_form.text_field :name, autofocus: true, class:'form-control', placeholder:'Enter your hobby'
+    /     %br
+    /     = hobby_form.link_to_remove "Remove this hobby", class:'btn btn-danger', style:'margin-top:5px'
+    /   = f.link_to_add "Add a hobby", :hobbies, cv:@cv, class:'btn btn-success', style:'margin-top:5px'
       

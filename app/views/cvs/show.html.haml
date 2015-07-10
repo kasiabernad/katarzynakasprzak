@@ -1,76 +1,115 @@
 .container
-  %p#notice= notice
-  .col-md-2{style:'font-weight: bold'}
-    %h2{style:'text-transform:uppercase'}
-      = @cv.user.firstname
+  #printable
+    %button{:onclick => "PrintDiv('printable','filename');return false;", class:'hidden-on-print'}
+      = "Drukuj"
+    %p#notice= notice
+    .col-md-2{style:'font-weight: bold'}
+      %h2{style:'text-transform:uppercase'}
+        = @cv.user.firstname
+        %br
+        = @cv.user.lastname
+      = image_tag(@cv.user.avatar_url, :width => 100, class:'class-image') if @cv.user.avatar.present?
       %br
-      = @cv.user.lastname
-    = image_tag(@cv.user.avatar_url, :width => 100, class:'class-image') if @cv.user.avatar.present?
-    %br
-    = @cv.user.street_address
-    %br
-    = @cv.user.zip
-    = @cv.user.city
-    %br
-    %ul{style:'font-size:9px'}
-      %li
-        %i.phone
-      %li
-        = @cv.user.phone
-      %li
-        %i.email
-      %li
-        = @cv.user.email
-      %li
-        %i.linkedin
-      %li
-        = @cv.user.linkedin
-  .col-md-10
-    %p
-      %i.career{style:'float:left'}
-      %h4 Career
-    = @cv.about.description
-    %br
-    %p
-      %i.experiance{style:'float:left'}
-      %h4 Experiance
-    - @cv.jobs.each do |job|
-      .col-md-5
-        = job.name
+      = @cv.user.street_address
+      %br
+      = @cv.user.zip
+      = @cv.user.city
+      %br
+      %ul.right{style:'font-size:9px'}
+        %li.right
+          %i.phone
+        %li.right
+          = @cv.user.phone
+        %li.right
+          %i.email
+        %li.right
+          = @cv.user.email
+        %li.right
+          %i.linkedin
+        %li.right
+          = @cv.user.linkedin
+    .col-md-10
+      %p
+        %i.career{style:'float:left'}
+        %h4 Career
         %br
-        = job.city
+      = @cv.about.description
+      %br
+      %br
+    
+      %p
+        %i.experiance{style:'float:left'}
+        %h4 Experiance
         %br
-        = job.start_date
-        = '-'
-        = job.end_date
-      .col-md-5
-        = job.jobtittle
+      - @cv.jobs.each do |job|
+        .col-md-6
+          = job.name
+          %br
+          = job.city
+          %br
+          = job.start_date.strftime('%m.%Y')
+          = '-'
+          = job.end_date.strftime('%m.%Y')
+        .col-md-6
+          = job.jobtittle
+          %br
+          = job.description
+      %br
+      %p
+        %i.education{style:'float:left'}
+        %h4 Education
         %br
+      - @cv.educations.each do |education|
+        .col-md-6
+          = education.level
+          %br
+          = education.city
+          %br
+          = education.start_year.strftime('%Y')
+          = '-'
+          = education.end_year.strftime('%Y')
+        .col-md-6
+          = education.name
+          %br
+          = education.profile
+          %br
+          %br
+          %br
+      %br
+      %p
+        %i.skills{style:'float:left'}
+        %h4 Skills
         %br
-        %br
-
-    %br
-    %p
-      %i.education{style:'float:left'}
-      %h4 Education
-    - @cv.educations.each do |education|
-      = education.name
-      = education.city
-      = education.level
-    %br
-    %p
-      %i.skills{style:'float:left'}
-      %h4 Skills
-    - @cv.skills.each do |skill|
-      = skill.name
-      = skill.level
-      = skill.skill_type
-    %br
-    %p
-      %i.hobby{style:'float:left'}
-      %h4 Hobby
-    - @cv.hobbies.each do |hobby|
-      = hobby.name
+        .col-md-6
+          Professional Skills
+          - @cv.skills_with_type('Professional').each do |skill_professional|
+            %ul.skill  
+              .col-md-6 
+                = skill_professional.name
+              .col-md-6
+                - (1..skill_professional.level.to_i).each do |i|
+                  %i.skill-point-red
+                - (1..5-skill_professional.level.to_i).each do |i|
+                  %i.skill-point-grey
+        .col-md-6
+          Personal Skills
+          - @cv.skills_with_type('Personal').each do |skill_personal|
+            %ul.skill
+              .col-md-6
+                = skill_personal.name
+              .col-md-6
+                - (1..skill_personal.level.to_i).each do |i|
+                  %i.skill-point-red
+                - (1..5-skill_personal.level.to_i).each do |i|
+                  %i.skill-point-grey
+              
+      / %br
+      / %p
+      /   %i.hobby{style:'float:left'}
+      /   %h4 Hobby
+      / - @cv.hobbies.each do |hobby|
+      /   %br
+      /   = hobby.name
     
     
   = link_to 'Edit', edit_cv_path(@cv)
