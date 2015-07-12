@@ -39,4 +39,4 @@ Skill.create! id: 8, name: "Git", level: "1", cv_id: 1, skill_type: "Zawodowa"
 Skill.create! id: 9, name: "Ruby on Rails", level: "1", cv_id: 1, skill_type: "Zawodowa"
 Skill.create! id: 10, name: "Html/Css", level: "3", cv_id: 1, skill_type: "Zawodowa"
 
-About.create! id:1, description:"Jestem absolwentką Uniwersytetu Ekonomicznego w Poznaniu. Mimo, że interesuję się ekonomią to jednak moja kreatywność pchnęła mnie w kierunku programowania. Łączę w sobie cechy zarówno osoby kreatywnej (tworzę własną biżuterię, zajmowałam się copywritingiem) jak i osoby lubiącej odtwórcze zajęcia(praca w biurze rachunkowym). Szybko się uczę i jestem otwarta na poznawanie coraz to nowszych środowisk programowych.", cv_id:1
+About.create! id:1, description:"Jestem absolwentką Uniwersytetu Ekonomicznego w Poznaniu. Mimo, że interesuję się ekonomią to jednak moja kreatywność pchnęła mnie w kierunku programowania. Łączę w sobie cechy zarówno osoby kreatywnej (tworzę własną biżuterię, zajmowałam się copywritingiem) jak i osoby lubiącej odtwórcze zajęcia(praca w biurze rachunkowym). Szybko się uczę i jestem otwarta na poznawanie coraz to nowszych środowisk programistycznych.", cv_id:1
