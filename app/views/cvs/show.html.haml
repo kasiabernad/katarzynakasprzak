@@ -122,7 +122,7 @@
 %br
 %hr
 %center
-  = link_to 'Edytuj Cv', edit_cv_path(@cv), class:'btn btn-primary btn-lg'
-  \|
+  - if !@cv.id == 1
+    = link_to 'Edytuj Cv', edit_cv_path(@cv), class:'btn btn-primary btn-lg'
   = link_to 'Wróć', :back, class:'btn btn-primary btn-lg'
   
