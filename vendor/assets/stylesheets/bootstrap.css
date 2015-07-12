@@ -202,6 +202,7 @@ th {
   a,
   a:visited {
     text-decoration: underline;
+    color: white;
   }
   a[href]:after {
     content: " (" attr(href) ")";
@@ -1719,14 +1720,14 @@ i.experiance{
 i.education{
   width: 35px;
   height: 35px;
-  background: url(../assets/education.png)no-repeat 0px 0px;
+  background: url(../assets/education.png)no-repeat 0px 5px;
   display: inline-block;
   vertical-align: middle;
   }
 i.skills{
   width: 35px;
   height: 30px;
-  background: url(../assets/skills.png)no-repeat -2px 0px;
+  background: url(../assets/skills.png)no-repeat -2px 5px;
   display: inline-block;
   vertical-align: middle;
   }
@@ -1754,7 +1755,14 @@ i.skill-point-grey{
   display: inline-block;
   vertical-align: middle;
 }
-   
+i.my-avatar{
+  width: 150px;
+  height: 150px;
+  background: url(../assets/my-avatar.jpg)no-repeat -20px -50px;
+  display: inline-block;
+  vertical-align: middle;
+  float:left;
+}
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -2136,6 +2144,8 @@ i.skill-point-grey{
   }
   .col-md-2 {
     width: 16.66666667%;
+    height:auto;
+    
   }
   .col-md-1 {
     width: 8.33333333%;
@@ -3221,6 +3231,9 @@ fieldset[disabled] .btn {
 a.btn.disabled,
 fieldset[disabled] a.btn {
   pointer-events: none;
+}
+a.btn:visited{
+  color: white;
 }
 .btn-default {
   color: #333;

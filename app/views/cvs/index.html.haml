@@ -1,19 +1,24 @@
-%h1 Listing cvs
-
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @cvs.each do |cv|
-      %tr
-        %td= link_to 'Show', cv
-        %td= link_to 'Edit', edit_cv_path(cv)
-        %td= link_to 'Destroy', cv, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Cv', new_cv_path
+.container
+  .big-box
+    %table.table
+      %tbody
+        %center
+          %h4 Oto lista wszystkich CV
+        %tr
+          %td Nr Cv
+          %td.manage_button Opcje
+        - @cvs.each do |cv|
+          %tr
+            %td= cv.id
+            %td.manage_button
+              .btn-group
+                .btn.btn-custom.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+                  Zarządzaj
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
+                  %li= link_to 'Pokaż CV', cv
+                  %li= link_to 'Edytuj', edit_cv_path(cv)
+                  %li= link_to 'Usuń', cv, :method => :delete, :data => { :confirm => 'Jesteś pewien?' }
+    %center   
+      = link_to 'Nowe Cv', new_cv_path, class:'btn btn-success btn-lg'
+  

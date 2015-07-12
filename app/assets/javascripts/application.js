@@ -23,7 +23,6 @@ function PrintDiv(name, file) {
  var popupWin = window.open('', '_blank', 'width=600,height=600');
  popupWin.document.open();
  popupWin.document.title = file
- popupWin.document.write('<html>')
- popupWin.document.write('<body><link href="aplication.css" rel="stylesheet" type="text/css" />' + divToPrint.innerHTML + '</body></html>');
+ popupWin.document.write('<html><style>td {border: 1px solid;width:10px;height:10px}  .hidden-on-print {visibility: hidden;display: none;}</style><body>' + divToPrint.innerHTML + '</body></html>');
  popupWin.document.close();
 }
