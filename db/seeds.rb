@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Cv.create! id:1
-User.create! id:1, firstname:"Katarzyna", lastname: "Kasprzak", phone: "796 592 618", email: "kasia.kasprzak18@gmail.com", linkedin: "linkedin.com/in/kasiakasprzak", avatar: "FullSizeRender-1.jpg", street_address: "Wschodnia 16/1", city: "Niechorze", zip: "72-350", created_at: "2015-07-09 09:26:13", updated_at: "2015-07-09 10:29:10", cv_id: 1
+User.create! id:1, firstname:"Katarzyna", lastname: "Kasprzak", phone: "796 592 618", email: "kasia.kasprzak18@gmail.com", linkedin: "linkedin.com/in/kasiakasprzak", avatar: "FullSizeRender-1.jpg", street_address: "Saperska 32/42", city: "Poznań", zip: "61-493", created_at: "2015-07-09 09:26:13", updated_at: "2015-07-09 10:29:10", cv_id: 1
 
 Job.create! id:1, name: "Inea", city: "Poznań", jobtittle: "Dział Realizacji Sprzedaży", start_date: "2012-10-01", end_date: "2012-12-31", cv_id: 1, description: "Podczas pracy w dziale realizacji sprzedaży firmy Inea miałam okazję korzystać z bazy danych Posejdon."
 
