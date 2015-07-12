@@ -1,119 +1,116 @@
 .container
-  #printable
-    %p#notice= notice
-    .col-md-2{style:'font-weight: bold'}
-      %h2{style:'text-transform:uppercase'}
-        = @cv.user.firstname
+  %p#notice= notice
+  .col-md-2{style:'font-weight: bold'}
+    %h2{style:'text-transform:uppercase'}
+      = @cv.user.firstname
+      %br
+      = @cv.user.lastname
+    - if @cv.id == 1
+      %i.my-avatar{class:'class-image', style:'margin-bottom:10px'}
+    = image_tag(@cv.user.avatar_url, :width => 100, class:'class-image') if @cv.user.avatar.present?
+    %br
+    = @cv.user.street_address
+    %br
+    = @cv.user.zip
+    = @cv.user.city
+    %br
+    %ul.right{style:'font-size:9px'}
+      %li.right
+        %i.phone
+      %li.right
+        = @cv.user.phone
+      %li.right
+        %i.email
+      %li.right
+        = @cv.user.email
+      %li.right
+        %i.linkedin
+      %li.right
+        = @cv.user.linkedin
+    %br
+  .col-md-10{style:'text-align:justify'}
+    %p
+      %i.career{style:'float:left'}
+      %h4 Kariera
+      %br
+    = @cv.about.description
+    %br
+    %br
+  .col-md-10{style:'text-align:justify'}
+    %p
+      %i.experiance{style:'float:left'}
+      %h4 Doświadczenie
+    - @cv.jobs.each do |job|
+      .col-md-6
         %br
-        = @cv.user.lastname
-      - if @cv.id == 1
-        %i.my-avatar{class:'class-image', style:'margin-bottom:10px'}
-      = image_tag(@cv.user.avatar_url, :width => 100, class:'class-image') if @cv.user.avatar.present?
-      %br
-      = @cv.user.street_address
-      %br
-      = @cv.user.zip
-      = @cv.user.city
-      %br
-      %ul.right{style:'font-size:9px'}
-        %li.right
-          %i.phone
-        %li.right
-          = @cv.user.phone
-        %li.right
-          %i.email
-        %li.right
-          = @cv.user.email
-        %li.right
-          %i.linkedin
-        %li.right
-          = @cv.user.linkedin
-      %br
-      %button{:onclick => "PrintDiv('printable','filename');return false;", class:'hidden-on-print', style:'float:right'}
-        = "Drukuj CV"
-    .col-md-10{style:'text-align:justify'}
-      %p
-        %i.career{style:'float:left'}
-        %h4 Kariera
+        %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
+          = job.name
+        %h6{style:'color:red;font-weight:bold;margin:0'}
+          = job.city
+        = job.start_date.strftime('%m.%Y')
+        = '-'
+        = job.end_date.strftime('%m.%Y')
         %br
-      = @cv.about.description
-      %br
-      %br
-    .col-md-10{style:'text-align:justify'}
-      %p
-        %i.experiance{style:'float:left'}
-        %h4 Doświadczenie
-      - @cv.jobs.each do |job|
-        .col-md-6
-          %br
-          %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
-            = job.name
-          %h6{style:'color:red;font-weight:bold;margin:0'}
-            = job.city
-          = job.start_date.strftime('%m.%Y')
-          = '-'
-          = job.end_date.strftime('%m.%Y')
-          %br
-        .col-md-6
-          %br
-          %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
-            = job.jobtittle
-          = job.description
-          %br
-      %br
-    .col-md-2
-    .col-md-10{style:'text-align:justify'}
-      %p
-        %i.education{style:'float:left'}
-        %h4{style:'margin-top:10px'} Wykształcenie
+      .col-md-6
         %br
-      - @cv.educations.each do |education|
-        .col-md-6
-          %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
-            = education.name
-          = education.city
-          %br
-          = education.beginn.strftime('%Y')
-          = '-'
-          = education.end_year.strftime('%Y')
-        .col-md-6
-          %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
-            = education.level
-          %h6{style:'text-transform:uppercase;font-weight:bold;margin:0;color:red'}
-            = education.profile
-          %br
-          %br
-          %br
+        %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
+          = job.jobtittle
+        = job.description
+        %br
+    %br
+  .col-md-2
+  .col-md-10{style:'text-align:justify'}
+    %p
+      %i.education{style:'float:left'}
+      %h4{style:'margin-top:10px'} Wykształcenie
       %br
-    .col-md-2
-    .col-md-10{style:'text-align:justify'}
-      %p
-        %i.skills{style:'float:left'}
-        %h4 Umiejętności
-        .col-md-6
-          %h5{style:'font-weight:bold'}
-            Umiejętności zawodowe
-          - @cv.skills_with_type('Zawodowa').each do |skill_professional|
-            %ul.skill  
-              .col-md-6 
-                = skill_professional.name
-              .col-md-6
-                - (1..skill_professional.level.to_i).each do |i|
-                  %i.skill-point-red
-                - (1..5-skill_professional.level.to_i).each do |i|
-                  %i.skill-point-grey
-        .col-md-6
-          %h5{style:'font-weight:bold'}
-            Umiejętności osobiste
-          - @cv.skills_with_type('Osobista').each do |skill_personal|
-            %ul.skill
-              .col-md-6
-                = skill_personal.name
-              .col-md-6
-                - (1..skill_personal.level.to_i).each do |i|
-                  %i.skill-point-red
-                - (1..5-skill_personal.level.to_i).each do |i|
-                  %i.skill-point-grey
+    - @cv.educations.each do |education|
+      .col-md-6
+        %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
+          = education.name
+        = education.city
+        %br
+        = education.beginn.strftime('%Y')
+        = '-'
+        = education.end_year.strftime('%Y')
+      .col-md-6
+        %h5{style:'text-transform:uppercase;font-weight:bold;margin:0'}
+          = education.level
+        %h6{style:'text-transform:uppercase;font-weight:bold;margin:0;color:red'}
+          = education.profile
+        %br
+        %br
+        %br
+    %br
+  .col-md-2
+  .col-md-10{style:'text-align:justify'}
+    %p
+      %i.skills{style:'float:left'}
+      %h4 Umiejętności
+      .col-md-6
+        %h5{style:'font-weight:bold'}
+          Umiejętności zawodowe
+        - @cv.skills_with_type('Zawodowa').each do |skill_professional|
+          %ul.skill  
+            .col-md-6 
+              = skill_professional.name
+            .col-md-6
+              - (1..skill_professional.level.to_i).each do |i|
+                %i.skill-point-red
+              - (1..5-skill_professional.level.to_i).each do |i|
+                %i.skill-point-grey
+      .col-md-6
+        %h5{style:'font-weight:bold'}
+          Umiejętności osobiste
+        - @cv.skills_with_type('Osobista').each do |skill_personal|
+          %ul.skill
+            .col-md-6
+              = skill_personal.name
+            .col-md-6
+              - (1..skill_personal.level.to_i).each do |i|
+                %i.skill-point-red
+              - (1..5-skill_personal.level.to_i).each do |i|
+                %i.skill-point-grey
               
       / %br
       / %p
