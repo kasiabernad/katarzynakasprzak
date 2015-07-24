@@ -28,7 +28,7 @@ Education.create! name: "Uniwersytet Ekonomiczny w Poznaniu", city: "Poznań", l
 
 Education.create! name: "Uniwersytet Ekonomiczny w Poznaniu", city: "Poznań", level: "Studia magisterskie", cv_id: 1, beginn: "2013-09-01", end_year: "2015-07-01", profile: "Finanse i Rachunkowość"
 
-Skill.create! name: "J.Niemiecki", level: "4", cv_id: 1, skill_type: "Osobista"
+Skill.create! name: "J.Niemiecki", level: "3", cv_id: 1, skill_type: "Osobista"
 Skill.create! name: "J.Angielski", level: "3", cv_id: 1, skill_type: "Osobista"
 Skill.create! name: "Adobe Photoshop", level: "2", cv_id: 1, skill_type: "Zawodowa"
 Skill.create! name: "Prawo Jazdy kat.B", level: "1", cv_id: 1, skill_type: "Osobista"
